@@ -1,5 +1,42 @@
+
+body{
+  background-color: #f0f0f0
+}
+.back{
+  width: 800px;
+  height: auto;
+  background-color: lavenderblush;
+  display: block;
+  margin-left: auto;
+  padding-top: 20px;
+  /* padding-bottom: 101px; */
+  margin-right: auto;
+  border-radius: 20px;
+}
+.container{
+display: flex;
+justify-content: space-between;
+
+}
+
+.element{
+  margin-right: 5px;
+}
+
+
+.card{
+  width: 700px;
+  height:100px;
+  height: auto;
+  background-color: rgb(141, 109, 230);
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 20px;
+}
 .App {
+  background-color:rgb(17, 2, 33);
   text-align: center;
+  
 }
 
 .App-logo {

@@ -1,23 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
-
+import { useDispatch, useSelector } from 'react-redux';
+import AddTask from './Component/AddTask';
+import { addTask } from './redux/actions';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import ToDoList from './Component/ToDoList';
+import FilterTask from './Component/FilterTask';
 function App() {
+  // const data=useSelector(state=>state.data)=>listTask
+  //dispatch lel méthode 
+  
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AddTask></AddTask>
+      <FilterTask></FilterTask>
+    <ToDoList></ToDoList>
     </div>
   );
 }
