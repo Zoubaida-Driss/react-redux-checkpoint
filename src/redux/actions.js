@@ -13,12 +13,12 @@ export const deleteTask = key => {
     }
 }
 
-export const handlefilterchange = value => {
-    return {
-        type: HANDLE_FILTER_CHANGE,
-        payload: value
-    }
-}
+// export const handlefilterchange = value => {
+//     return {
+//         type: HANDLE_FILTER_CHANGE,
+//         payload: value
+//     }
+// }
 // export const handletitlechange = value => {
 //     return {
 //         type: HANDLE_TITLE_CHANGE,

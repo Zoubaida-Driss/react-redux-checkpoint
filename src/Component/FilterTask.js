@@ -1,16 +1,14 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { filterTask, handlefilterchange } from '../redux/actions'
+import React, { useState } from 'react'
 
-const FilterTask = () => {
-    const taskfilter=useSelector(state=>state.taskfilter)
-    const dispatch=useDispatch()
+import {   } from '../redux/actions'
+
+const FilterTask = ({filterDone,handlefilterchange}) => {
 
 
   return (
     <div>
 
-        <input   value={taskfilter} onChange={(e)=>dispatch(handlefilterchange(e.target.value))} type="text" name="
+        <input   value={filterDone} onChange={(e)=>handlefilterchange(e.target.value)} type="text" name="
         " id="" />
     </div>
   )

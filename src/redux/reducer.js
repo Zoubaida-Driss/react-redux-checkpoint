@@ -37,7 +37,7 @@ const initialState = {
       done: false,
     },
   ],
-  taskfilter: "",
+
 };
 
 const reducer = (state = initialState, action) => {
@@ -52,22 +52,23 @@ const reducer = (state = initialState, action) => {
       };
     case EDIT_TASK:
       return {
-        data: { ...state, name: state.data[action.payload].name },
+        //{...el,...action.payload}:modifier les changement
+        data:state.data.map(el=>el.id===action.payload.id?{...el,...action.payload}:el),
       };
 
-    case HANDLE_FILTER_CHANGE:
-      if (
-        action.payload.toLocaleLowerCase().includes("done".toLocaleLowerCase())
-      ) {
-        console.log("true");
-        return {
-          data: state.data.filter((el) => el.done == true),
-        };
-      } else {
-        return {
-          data: state.data,
-        };
-      }
+    // case HANDLE_FILTER_CHANGE:
+    //   if (
+    //     action.payload.toLocaleLowerCase().includes("done".toLocaleLowerCase())
+    //   ) {
+    //     console.log("true");
+    //     return {
+    //       data: state.data.filter((el) => el.done === true),
+    //     };
+    //   } else {
+    //     return {
+    //       data: state.data,
+    //     };
+    //   }
 
     default:
       return state;

@@ -1,17 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Modal from 'react-modal';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteTask } from '../redux/actions';
+import { deleteTask, editTask } from '../redux/actions';
 const ToDoCard = ({task}) => {
+ 
+  //useSelector : contient les valeurs de state
+  const [updatedname, setUpdatedName] = useState(task.name)
+  const [updateddate, setUpdatedDate] = useState(task.date)
+  const [updateddescription, setUpdatedDescription] = useState(task.description)
+  
     const dispatch=useDispatch()
-
     Modal.setAppElement('#root');
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const customStyles = {
       content: {
-          width:"30%",
+        width:"30%",
         top: '50%',
         left: '50%',
         right: 'auto',
@@ -20,6 +25,22 @@ const ToDoCard = ({task}) => {
         transform: 'translate(-50%, -50%)',
       },
     };
+    const handleSubmit=(e)=>
+    {
+      e.preventDefault();
+       const info = {
+        id:task.id,
+        name:updatedname,
+        date:updateddate,
+        description:updateddescription,
+        done:task.done
+       }
+        dispatch(editTask(info))
+    
+        closeModal()
+    
+    }
+
   function openModal() {
     setIsOpen(true);
   }
@@ -46,14 +67,16 @@ const ToDoCard = ({task}) => {
         contentLabel="Example Modal"
       >
          <h5>Add your task</h5>
-        <form   class="row" >
+        <form onSubmit={handleSubmit}  class="row" >
           <label>Task title</label>
-          <input type="text" value={task.name}   />
+          <input type="text" value={updatedname} onChange={e=>setUpdatedName(e.target.value)}  />
           <label>Description</label>
-          <input type="text" value={task.description}  />
+          <input type="text" value={updateddescription}  onChange={e=>setUpdatedDescription(e.target.value)}/>
           <label>Date</label>
-          <input type="date" value={task.date} />
+          <input type="date" value={updateddate} onChange={e=>setUpdatedDate(e.target.value)} />
           <Button variant="success" style={{width:"20%" }} type="submit" className='element' >Modifier</Button>
+          <Button variant="success" style={{width:"20%" }} onClick={closeModal} type="submit" className='element' >Annuler</Button>
+
         </form>
       </Modal>
        <Button  onClick={()=>dispatch(deleteTask(task.id))} variant="danger" className='element'>Delete</Button>

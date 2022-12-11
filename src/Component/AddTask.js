@@ -29,7 +29,7 @@ const AddTask = () => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
 const handleSubmit=()=>
 {
-    const info ={title,date,description}
+    const info ={id:Math.random(),title,date,description}
     console.log(info)
     dispatch(addTask(info))
 

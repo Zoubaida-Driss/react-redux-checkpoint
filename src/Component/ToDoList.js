@@ -2,8 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import ToDoCard from './ToDoCard'
 
-const ToDoList = () => {
-    const data=useSelector(state=>state.data)
+const ToDoList = ({data}) => {
   return (
     <div className='back'>
   
